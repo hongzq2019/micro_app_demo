@@ -1,0 +1,11 @@
+spring:
+  profiles:
+    active: prod
+  config:
+    import: nacos:bootstrap.yml
+  elasticsearch:
+    uris: http://192.168.80.41:9210
+    username: elastic
+    password: YM12wHlTNi8CO8cXab
+logging:
+  config: classpath:logback-spring.xml

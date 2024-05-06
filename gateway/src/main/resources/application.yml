@@ -1,0 +1,11 @@
+server:
+  port: 7000
+  servlet:
+    context-path: gateway
+spring:
+  application:
+    name: gateway
+  config:
+    import: nacos:bootstrap.yml
+logging:
+  config: classpath:logback-spring.xml

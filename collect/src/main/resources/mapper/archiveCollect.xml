@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yozosoft.app.collect.mapper.ArchiveCollectMapper">
+    <resultMap id="collectResult" type="com.yozosoft.app.entity.collect.CollectEntity">
+        <id column="ID" property="id" javaType="java.lang.String"/>
+        <result column="REAL_NAME" property="realName" javaType="java.lang.String"/>
+        <result column="TOTAL_NAME" property="totalName" javaType="java.lang.String"/>
+        <result column="YEAR" property="year" javaType="java.lang.Integer"/>
+        <result column="CREATE_TIME" property="createTime" javaType="java.util.Date"/>
+    </resultMap>
+    <select id="countByYear" resultType="java.lang.Integer" parameterType="java.lang.String">
+        select count(1) from archive_collect where year = #{year}
+    </select>
+</mapper>

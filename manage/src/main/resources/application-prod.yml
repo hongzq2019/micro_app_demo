@@ -1,0 +1,21 @@
+server:
+  port: 8014
+spring:
+  application:
+    name: manage
+  datasource:
+    url: jdbc:mysql://127.0.0.1:3306/app?useSSL=false&useUnicode=true&characterEncoding=UTF-8
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: root
+    hikari:
+      minimum-idle: 20
+      maximum-pool-size: 50
+mybatis-plus:
+  mapper-locations: classspath:/mapper/*.xml
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  boot:
+    admin:
+      client:
+        url: http://127.0.0.1:7000

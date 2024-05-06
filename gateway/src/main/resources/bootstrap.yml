@@ -1,0 +1,27 @@
+spring:
+  cloud:
+    nacos:
+      username: nacos
+      password: nacos
+      discovery:
+        server-addr: 127.0.0.1:8848
+        namespace: 394dc226-eec7-44e8-90c1-2c9fcffa5a5e
+        group: prod
+        register-enabled: true
+      config:
+        server-addr: 127.0.0.1:8848
+        file-extension: yaml
+        namespace: 394dc226-eec7-44e8-90c1-2c9fcffa5a5e
+        group: prod
+    sentinel:
+      transport:
+        dashboard: 127.0.0.1:8180
+        port: 8719
+      eager: true
+    gateway:
+      discovery:
+        locator:
+          # 通过注册中心的serviceId建立路由
+          enabled: true
+          # url路径可以使用小写的serviceId进行访问
+          lower-case-service-id: true
