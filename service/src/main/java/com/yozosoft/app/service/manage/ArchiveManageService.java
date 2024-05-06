@@ -1,5 +1,7 @@
 package com.yozosoft.app.service.manage;
 
+import com.yozosoft.app.config.result.Result;
+
 /**
  * @author hongzhiqiang
  * @ClassName ArchiveCollectService
@@ -9,6 +11,6 @@ package com.yozosoft.app.service.manage;
  */
 public interface ArchiveManageService {
 
-    String getManageList();
+    Result getManageList(String collectId);
 
 }

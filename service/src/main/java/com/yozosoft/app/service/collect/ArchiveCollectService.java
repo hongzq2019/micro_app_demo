@@ -12,7 +12,7 @@ import com.yozosoft.app.config.result.Result;
  */
 public interface ArchiveCollectService{
 
-    Result getArchiveCollectList();
+    Result getArchiveCollectList(String collectId);
 
     Result addArchiveCollect(CollectDto collectDto);
 

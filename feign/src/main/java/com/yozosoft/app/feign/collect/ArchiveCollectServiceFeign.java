@@ -3,6 +3,7 @@ package com.yozosoft.app.feign.collect;
 import com.yozosoft.app.feign.manage.ArchiveManageServiceFeignFallBack;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 /**
  * @author hongzhiqiang

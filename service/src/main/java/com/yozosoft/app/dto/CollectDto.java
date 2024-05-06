@@ -1,6 +1,8 @@
 package com.yozosoft.app.dto;
 
 import lombok.Data;
+import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.constraints.NotBlank;
 
 /**
  * @author hongzhiqiang
@@ -12,10 +14,16 @@ import lombok.Data;
 @Data
 public class CollectDto {
 
+    @NotBlank
+    @Length(max = 30)
     private String totalName;
 
+    @Length(max = 30)
+    @NotBlank
     private String realName;
 
+    @NotBlank
+    @Length(min = 1, max = 4)
     private int year;
 
 }

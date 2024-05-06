@@ -3,6 +3,7 @@ package com.yozosoft.app.feign.manage;
 import com.yozosoft.app.config.result.Result;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 /**
  * @author hongzhiqiang
@@ -15,6 +16,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 public interface ArchiveManageServiceFeign {
 
     @GetMapping("/archiveManageController/getManageList")
-    Result getManageList();
+    Result getManageList(@RequestParam("collectId") String collectId);
 
 }

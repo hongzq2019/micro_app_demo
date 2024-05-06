@@ -14,7 +14,7 @@ import com.yozosoft.app.config.result.Result;
 public class ArchiveCollectServiceFeignFallBack implements ArchiveCollectService{
 
     @Override
-    public Result getArchiveCollectList() {
+    public Result getArchiveCollectList(String collectId) {
         return Result.failed("系统开小差,收集");
     }
 
