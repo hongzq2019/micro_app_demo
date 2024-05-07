@@ -4,6 +4,9 @@ import lombok.Data;
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotBlank;
 
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+
 /**
  * @author hongzhiqiang
  * @ClassName CollectDto
@@ -22,8 +25,8 @@ public class CollectDto {
     @NotBlank
     private String realName;
 
-    @NotBlank
-    @Length(min = 1, max = 4)
+    @Min(value = 0)
+    @Max(value = 9999)
     private int year;
 
 }

@@ -43,6 +43,7 @@ public class ArchiveCollectServiceImpl extends ServiceImpl<ArchiveCollectMapper,
      */
     @Override
     public Result getArchiveCollectList(String collectId) {
+
         List<CollectEntity> collectEntities = baseMapper.selectList(new QueryWrapper<>());
         Result manageListResult = archiveManageServiceFeign.getManageList(collectId);
         if (manageListResult.getCode()) {
@@ -61,9 +62,9 @@ public class ArchiveCollectServiceImpl extends ServiceImpl<ArchiveCollectMapper,
     @GlobalTransactional(rollbackFor = {Exception.class, RuntimeException.class})
     public Result addArchiveCollect(CollectDto collectDto) {
 
-        int i = collectMapper.countByYear(String.valueOf(collectDto.getYear()));
+        int i = collectMapper.countByYear(collectDto.getYear());
         if (i > 0) {
-            return Result.failed("数据重复");
+            return Result.failed("年度重复");
         }
 
         CollectEntity collectEntity = new CollectEntity();

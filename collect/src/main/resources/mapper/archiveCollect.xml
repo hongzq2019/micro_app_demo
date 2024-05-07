@@ -8,7 +8,7 @@
         <result column="YEAR" property="year" javaType="java.lang.Integer"/>
         <result column="CREATE_TIME" property="createTime" javaType="java.util.Date"/>
     </resultMap>
-    <select id="countByYear" resultType="java.lang.Integer" parameterType="java.lang.String">
+    <select id="countByYear" resultType="java.lang.Integer" parameterType="java.lang.Integer">
         select count(1) from archive_collect where year = #{year}
     </select>
 </mapper>
