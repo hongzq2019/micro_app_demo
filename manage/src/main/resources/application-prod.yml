@@ -15,6 +15,9 @@ mybatis-plus:
   mapper-locations: classspath:/mapper/*.xml
   configuration:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    map-underscore-to-camel-case: true
+    call-setters-on-nulls: true
+  type-aliases-package: com.yozosoft.app.manage.*
   boot:
     admin:
       client:

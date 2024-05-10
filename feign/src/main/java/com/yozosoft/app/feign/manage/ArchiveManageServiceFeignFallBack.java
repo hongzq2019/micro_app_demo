@@ -1,6 +1,7 @@
 package com.yozosoft.app.feign.manage;
 
 import com.yozosoft.app.config.result.Result;
+import com.yozosoft.app.dto.ManageDto;
 import com.yozosoft.app.service.manage.ArchiveManageService;
 import org.springframework.stereotype.Service;
 
@@ -13,6 +14,11 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class ArchiveManageServiceFeignFallBack implements ArchiveManageService {
+
+    @Override
+    public Result addManage(ManageDto manageDto) {
+        return Result.failed("系统开小差,管理");
+    }
 
     @Override
     public Result getManageList(String collectId) {

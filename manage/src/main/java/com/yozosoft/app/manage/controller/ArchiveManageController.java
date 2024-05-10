@@ -1,15 +1,13 @@
 package com.yozosoft.app.manage.controller;
 
 import com.yozosoft.app.config.result.Result;
+import com.yozosoft.app.dto.ManageDto;
 import com.yozosoft.app.entity.manage.ManageEntity;
 import com.yozosoft.app.manage.impl.ArchiveManageServiceImpl;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -28,6 +26,11 @@ public class ArchiveManageController {
 
     @Autowired
     private ArchiveManageServiceImpl archiveManageService;
+
+    @PostMapping(value = "/addManage")
+    public Result addManage(@RequestBody ManageDto manageDto){
+        return archiveManageService.addManage(manageDto);
+    }
 
     /**
      * 获取配置

@@ -16,4 +16,6 @@ public interface ArchiveCollectService{
 
     Result addArchiveCollect(CollectDto collectDto);
 
+    Result getArchiveCollectConfig(String collectId, String projectName);
+
 }

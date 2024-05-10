@@ -22,4 +22,9 @@ public class ArchiveCollectServiceFeignFallBack implements ArchiveCollectService
     public Result addArchiveCollect(CollectDto collectDto) {
         return Result.failed("系统开小差,收集");
     }
+
+    @Override
+    public Result getArchiveCollectConfig(String collectId, String projectName) {
+        return Result.failed("系统开小差,收集");
+    }
 }

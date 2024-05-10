@@ -16,3 +16,8 @@ spring:
         file-extension: yaml
         namespace: 394dc226-eec7-44e8-90c1-2c9fcffa5a5e
         group: prod
+    sentinel:
+      transport:
+        dashboard: 127.0.0.1:8180
+        port: 8719
+      eager: true

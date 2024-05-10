@@ -3,9 +3,11 @@ package com.yozosoft.app.manage.impl;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.yozosoft.app.config.result.Result;
+import com.yozosoft.app.dto.ManageDto;
 import com.yozosoft.app.entity.manage.ManageEntity;
 import com.yozosoft.app.manage.mapper.ArchiveManageMapper;
 import com.yozosoft.app.service.manage.ArchiveManageService;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -23,6 +25,14 @@ public class ArchiveManageServiceImpl extends ServiceImpl<ArchiveManageMapper, M
 
     @Autowired
     private ArchiveManageMapper archiveManageMapper;
+
+    @Override
+    public Result addManage(ManageDto manageDto) {
+        ManageEntity manage = new ManageEntity();
+        BeanUtils.copyProperties(manageDto, manage);
+        baseMapper.insert(manage);
+        return Result.success();
+    }
 
     /**
      * 获取配置类信息

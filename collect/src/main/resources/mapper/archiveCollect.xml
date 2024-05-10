@@ -11,4 +11,19 @@
     <select id="countByYear" resultType="java.lang.Integer" parameterType="java.lang.Integer">
         select count(1) from archive_collect where year = #{year}
     </select>
+    <select id="queryCollectConfig" resultType="java.util.Map" parameterType="java.lang.String">
+        select a.id as manage_id,
+               a.collect_id as collect_id,
+               a.project_name as project_name,
+               a.project_number as project_number,
+               a.max_number as max_number,
+               a.create_time as manage_create_time,
+               b.real_name as real_name,
+               b.total_name as total_name,
+               b.create_time as collect_create_time,
+               b.year as year
+        from archive_manage a left join archive_collect b on a.collect_id = b.id
+        where b.id = #{collectId} and a.project_name like concat('%',#{projectName},'%')
+    </select>
+    
 </mapper>

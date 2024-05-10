@@ -1,6 +1,7 @@
 package com.yozosoft.app.service.manage;
 
 import com.yozosoft.app.config.result.Result;
+import com.yozosoft.app.dto.ManageDto;
 
 /**
  * @author hongzhiqiang
@@ -10,6 +11,8 @@ import com.yozosoft.app.config.result.Result;
  * @version: 1.0
  */
 public interface ArchiveManageService {
+
+    Result addManage(ManageDto manageDto);
 
     Result getManageList(String collectId);
 
