@@ -14,11 +14,22 @@ import java.util.concurrent.atomic.AtomicInteger;
  */
 public class CommonThreadFactory implements ThreadFactory {
 
+    // 自增 Number
     private final AtomicInteger theadSuffixId = new AtomicInteger(0);
 
+    // 线程名称前缀
     private final String name;
 
+    // 是否为守护线程
     private final boolean isDaemon;
+
+    CommonThreadFactory(String threadSuffixName){
+        if (StringUtils.hasText(threadSuffixName)){
+            threadSuffixName += ".";
+        }
+        this.name = threadSuffixName;
+        this.isDaemon = false;
+    }
 
     CommonThreadFactory(String threadSuffixName, boolean isDaemon){
         if (StringUtils.hasText(threadSuffixName)){
