@@ -1,5 +1,6 @@
 package com.yozosoft.app.config.thread;
 
+import com.yozosoft.app.config.constant.SystemConstants;
 import org.springframework.util.StringUtils;
 
 import java.util.concurrent.ThreadFactory;
@@ -23,17 +24,28 @@ public class CommonThreadFactory implements ThreadFactory {
     // 是否为守护线程
     private final boolean isDaemon;
 
-    CommonThreadFactory(String threadSuffixName){
-        if (StringUtils.hasText(threadSuffixName)){
-            threadSuffixName += ".";
+    /**
+     * 设置统一线程前缀
+     *
+     * @param threadSuffixName threadSuffixName
+     */
+    CommonThreadFactory(String threadSuffixName) {
+        if (StringUtils.hasText(threadSuffixName)) {
+            threadSuffixName += SystemConstants.Symbol.DOT;
         }
         this.name = threadSuffixName;
         this.isDaemon = false;
     }
 
-    CommonThreadFactory(String threadSuffixName, boolean isDaemon){
-        if (StringUtils.hasText(threadSuffixName)){
-            threadSuffixName += ".";
+    /**
+     * 设置统一线程前缀 + 是否为守护线程
+     *
+     * @param threadSuffixName threadSuffixName
+     * @param isDaemon         isDaemon
+     */
+    CommonThreadFactory(String threadSuffixName, boolean isDaemon) {
+        if (StringUtils.hasText(threadSuffixName)) {
+            threadSuffixName += SystemConstants.Symbol.DOT;
         }
         this.name = threadSuffixName;
         this.isDaemon = isDaemon;

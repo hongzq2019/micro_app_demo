@@ -1,6 +1,5 @@
 package com.yozosoft.app.collect.impl;
 
-import com.alibaba.nacos.common.utils.UuidUtils;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.yozosoft.app.collect.mapper.ArchiveCollectMapper;
@@ -13,6 +12,7 @@ import com.yozosoft.app.feign.manage.ArchiveManageServiceFeign;
 import com.yozosoft.app.service.collect.ArchiveCollectService;
 import io.seata.spring.annotation.GlobalTransactional;
 import lombok.extern.slf4j.Slf4j;
+import org.elasticsearch.common.UUIDs;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
@@ -64,7 +64,7 @@ public class ArchiveCollectServiceImpl extends ServiceImpl<ArchiveCollectMapper,
      */
     @Override
     @GlobalTransactional(rollbackFor = {Exception.class, RuntimeException.class})
-    public Result addArchiveCollect(CollectDto collectDto){
+    public Result addArchiveCollect(CollectDto collectDto) {
 
         int i = collectMapper.countByYear(collectDto.getYear());
         if (i > 0) {
@@ -73,7 +73,7 @@ public class ArchiveCollectServiceImpl extends ServiceImpl<ArchiveCollectMapper,
 
         // 保存收集信息
         CollectEntity collectEntity = new CollectEntity();
-        String id = UuidUtils.generateUuid();
+        String id = UUIDs.base64UUID();
         collectEntity.setId(id);
         BeanUtils.copyProperties(collectDto, collectEntity);
         baseMapper.insert(collectEntity);
@@ -84,7 +84,9 @@ public class ArchiveCollectServiceImpl extends ServiceImpl<ArchiveCollectMapper,
         manageDto.setProjectName(collectDto.getProjectName());
         manageDto.setProjectNumber(collectDto.getProjectNumber());
         Result result = archiveManageServiceFeign.saveMangeConfig(manageDto);
-        if (result.getCode()){
+        log.info("saveManageConfigResult is:{}", result);
+
+        if (!result.getCode()) {
             throw new AppException("管理保存异常!");
         }
 

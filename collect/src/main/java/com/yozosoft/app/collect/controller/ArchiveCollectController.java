@@ -32,6 +32,9 @@ public class ArchiveCollectController {
      */
     @PostMapping(value = "/addArchiveCollect")
     public Result addArchiveCollect(@Validated @RequestBody CollectDto collectDto) {
+        if (log.isDebugEnabled()) {
+            log.debug("addArchiveCollect receive param: {}", collectDto);
+        }
         return archiveCollectService.addArchiveCollect(collectDto);
     }
 
@@ -54,7 +57,9 @@ public class ArchiveCollectController {
      */
     @PostMapping(value = "/getArchiveCollectConfig")
     public Result getArchiveCollectConfig(@RequestBody JSONObject req) {
-
+        if (log.isDebugEnabled()) {
+            log.debug("getArchiveCollectConfig receive param: {}", req);
+        }
         String collectId = req.getString("collectId");
         String projectName = req.getString("projectName");
         return archiveCollectService.getArchiveCollectConfig(collectId, projectName);
