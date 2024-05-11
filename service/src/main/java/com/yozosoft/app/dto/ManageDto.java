@@ -1,5 +1,6 @@
 package com.yozosoft.app.dto;
 
+import com.yozosoft.app.config.constant.SystemConstants;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -18,15 +19,16 @@ import org.hibernate.validator.constraints.NotBlank;
 @AllArgsConstructor
 public class ManageDto {
 
-    @NotBlank
+    @NotBlank(message = SystemConstants.MsgStr.NOT_BLANK)
+    @Length(max = 30, message = SystemConstants.MsgStr.MAX_30)
     private String collectId;
 
-    @NotBlank
-    @Length(max = 30)
+    @NotBlank(message = SystemConstants.MsgStr.NOT_BLANK)
+    @Length(max = 30, message = SystemConstants.MsgStr.MAX_30)
     private String projectName;
 
-    @NotBlank
-    @Length(max = 30)
+    @NotBlank(message = SystemConstants.MsgStr.NOT_BLANK)
+    @Length(max = 30, message = SystemConstants.MsgStr.MAX_30)
     private String projectNumber;
 
     private int maxNumber;

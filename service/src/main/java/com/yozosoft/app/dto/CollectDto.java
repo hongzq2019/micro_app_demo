@@ -1,5 +1,6 @@
 package com.yozosoft.app.dto;
 
+import com.yozosoft.app.config.constant.SystemConstants;
 import lombok.Data;
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotBlank;
@@ -17,24 +18,24 @@ import javax.validation.constraints.Min;
 @Data
 public class CollectDto {
 
-    @NotBlank
-    @Length(max = 30)
+    @NotBlank(message = SystemConstants.MsgStr.NOT_BLANK)
+    @Length(max = 30, message = SystemConstants.MsgStr.MAX_30)
     private String totalName;
 
-    @Length(max = 30)
-    @NotBlank
+    @Length(max = 30, message = SystemConstants.MsgStr.MAX_30)
+    @NotBlank(message = SystemConstants.MsgStr.NOT_BLANK)
     private String realName;
 
     @Min(value = 0)
     @Max(value = 9999)
     private int year;
 
-    @NotBlank
-    @Length(max = 30)
+    @NotBlank(message = SystemConstants.MsgStr.NOT_BLANK)
+    @Length(max = 30, message = SystemConstants.MsgStr.MAX_30)
     private String projectName;
 
-    @NotBlank
-    @Length(max = 30)
+    @NotBlank(message = SystemConstants.MsgStr.NOT_BLANK)
+    @Length(max = 30, message = SystemConstants.MsgStr.MAX_30)
     private String projectNumber;
 
 }
