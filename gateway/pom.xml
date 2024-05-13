@@ -15,6 +15,11 @@
     <artifactId>gateway</artifactId>
     <packaging>jar</packaging>
     <dependencies>
+        <!--springboot-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter</artifactId>
+        </dependency>
         <!-- Nacos 服务发现、配置 -->
         <dependency>
             <groupId>com.alibaba.cloud</groupId>
@@ -93,6 +98,17 @@
     <build>
         <finalName>appGateway</finalName>
         <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>

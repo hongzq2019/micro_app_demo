@@ -1,7 +1,7 @@
 server:
   port: 7000
   servlet:
-    context-path: gateway
+    context-path: /gateway
 spring:
   application:
     name: gateway
