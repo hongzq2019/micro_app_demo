@@ -13,14 +13,16 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 /**
+ * Rest自定义全局异常
+ *
  * @author hongzhiqiang
  * @ClassName RestExceptionConfig
- * @description:
+ * @description: user exception , include Exception、RuntimeException、AppException、、、
  * @date 2023-08-14 12:22
  * @version: 1.0
  */
-@RestControllerAdvice
 @Slf4j
+@RestControllerAdvice
 public class RestExceptionConfig {
 
     /**
@@ -43,6 +45,7 @@ public class RestExceptionConfig {
      */
     @ExceptionHandler(value = AppException.class)
     public Result getAppException(AppException appException) {
+        log.error("AppException cause {}", appException.getMessage(), appException);
         return Result.failed(appException.getMessage());
     }
 
@@ -54,6 +57,7 @@ public class RestExceptionConfig {
      */
     @ExceptionHandler(value = MethodArgumentNotValidException.class)
     public Result getMethodArgumentNotValidException(MethodArgumentNotValidException exception) {
+        log.error("MethodArgumentNotValidException cause {}", exception.getMessage(), exception);
         List<FieldError> fieldErrors = exception.getBindingResult().getFieldErrors();
         Map<String, String> collect = fieldErrors.stream().
                 collect(Collectors.toMap(FieldError::getField, DefaultMessageSourceResolvable::getDefaultMessage));

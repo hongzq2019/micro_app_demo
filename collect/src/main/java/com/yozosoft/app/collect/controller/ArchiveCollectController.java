@@ -5,6 +5,7 @@ import com.yozosoft.app.collect.impl.ArchiveCollectServiceImpl;
 import com.yozosoft.app.config.result.Result;
 import com.yozosoft.app.dto.CollectDto;
 import lombok.extern.slf4j.Slf4j;
+import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.*;
  * @version: 1.0
  */
 @Slf4j
+@Validated
 @RestController
 @RequestMapping(value = "/archiveCollectController")
 public class ArchiveCollectController {
@@ -31,10 +33,7 @@ public class ArchiveCollectController {
      * @return Result
      */
     @PostMapping(value = "/addArchiveCollect")
-    public Result addArchiveCollect(@Validated @RequestBody CollectDto collectDto) {
-        if (log.isDebugEnabled()) {
-            log.debug("addArchiveCollect receive param: {}", collectDto);
-        }
+    public Result addArchiveCollect(@RequestBody CollectDto collectDto) {
         return archiveCollectService.addArchiveCollect(collectDto);
     }
 
@@ -45,7 +44,8 @@ public class ArchiveCollectController {
      * @return Result
      */
     @GetMapping(value = "/getArchiveCollectList")
-    public Result getArchiveCollectList(String collectId) {
+    public Result getArchiveCollectList(@NotEmpty(message = "参数不能为空!")
+                                        @RequestParam String collectId) {
         return archiveCollectService.getArchiveCollectList(collectId);
     }
 
@@ -57,9 +57,6 @@ public class ArchiveCollectController {
      */
     @PostMapping(value = "/getArchiveCollectConfig")
     public Result getArchiveCollectConfig(@RequestBody JSONObject req) {
-        if (log.isDebugEnabled()) {
-            log.debug("getArchiveCollectConfig receive param: {}", req);
-        }
         String collectId = req.getString("collectId");
         String projectName = req.getString("projectName");
         return archiveCollectService.getArchiveCollectConfig(collectId, projectName);

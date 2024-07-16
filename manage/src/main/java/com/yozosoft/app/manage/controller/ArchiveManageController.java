@@ -5,8 +5,10 @@ import com.yozosoft.app.dto.ManageDto;
 import com.yozosoft.app.entity.manage.ManageEntity;
 import com.yozosoft.app.manage.impl.ArchiveManageServiceImpl;
 import lombok.extern.slf4j.Slf4j;
+import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -18,17 +20,24 @@ import java.util.List;
  * @date 2023-08-07 16:15
  * @version: 1.0
  */
+@Slf4j
+@Validated
+@RefreshScope
 @RestController
 @RequestMapping(value = "/archiveManageController")
-@RefreshScope
-@Slf4j
 public class ArchiveManageController {
 
     @Autowired
     private ArchiveManageServiceImpl archiveManageService;
 
+    /**
+     * 添加配置
+     *
+     * @param manageDto ManageDto
+     * @return Result
+     */
     @PostMapping(value = "/addManage")
-    public Result addManage(@RequestBody ManageDto manageDto){
+    public Result addManage(@RequestBody ManageDto manageDto) {
         return archiveManageService.addManage(manageDto);
     }
 
@@ -39,7 +48,8 @@ public class ArchiveManageController {
      * @return Result
      */
     @GetMapping(value = "/getManageList")
-    public Result getManageList(@RequestParam("collectId") String collectId) {
+    public Result getManageList(@NotBlank(message = "参数不能为空!")
+                                @RequestParam("collectId") String collectId) {
         Result result = archiveManageService.getManageList(collectId);
         if (result.getCode()) {
             List<ManageEntity> resultList = (List<ManageEntity>) result.getData();
