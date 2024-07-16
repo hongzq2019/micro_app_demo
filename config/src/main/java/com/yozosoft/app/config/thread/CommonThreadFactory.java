@@ -29,7 +29,7 @@ public class CommonThreadFactory implements ThreadFactory {
      *
      * @param threadSuffixName threadSuffixName
      */
-    CommonThreadFactory(String threadSuffixName) {
+    public CommonThreadFactory(String threadSuffixName) {
         if (StringUtils.hasText(threadSuffixName)) {
             threadSuffixName += SystemConstants.Symbol.DOT;
         }
@@ -43,7 +43,7 @@ public class CommonThreadFactory implements ThreadFactory {
      * @param threadSuffixName threadSuffixName
      * @param isDaemon         isDaemon
      */
-    CommonThreadFactory(String threadSuffixName, boolean isDaemon) {
+    public CommonThreadFactory(String threadSuffixName, boolean isDaemon) {
         if (StringUtils.hasText(threadSuffixName)) {
             threadSuffixName += SystemConstants.Symbol.DOT;
         }
