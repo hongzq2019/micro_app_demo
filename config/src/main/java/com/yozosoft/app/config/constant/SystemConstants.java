@@ -11,6 +11,8 @@ package com.yozosoft.app.config.constant;
  */
 public class SystemConstants {
 
+    public static final String SYSTEM_DIC = "systemDic";
+
     public static final String CREATE_TIME = "createTime";
 
     public static final String UPDATE_TIME = "updateTime";

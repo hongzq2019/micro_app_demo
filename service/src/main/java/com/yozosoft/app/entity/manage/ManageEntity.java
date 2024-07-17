@@ -6,6 +6,10 @@ import com.yozosoft.app.config.constant.SystemConstants;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import mybatis.mate.annotation.Algorithm;
+import mybatis.mate.annotation.FieldBind;
+import mybatis.mate.annotation.FieldEncrypt;
+import mybatis.mate.annotation.FieldSensitive;
 
 import java.util.Date;
 
@@ -27,8 +31,19 @@ public class ManageEntity {
 
     private String collectId;
 
+    // 字段加密
+    @FieldEncrypt(algorithm = Algorithm.PBEWithMD5AndDES)
     private String projectName;
 
+    // 字段绑定 redis-key : projectType, show Text : projectTypeText
+    @FieldBind(type = "projectType", target = "projectTypeText")
+    private String projectType;
+
+    @TableField(exist = false)
+    private String projectTypeText;
+
+    // 数据脱敏处理 **AAA**
+    @FieldSensitive(type = "projectNumber")
     private String projectNumber;
 
     private int maxNumber;

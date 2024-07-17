@@ -13,6 +13,7 @@
     <packaging>jar</packaging>
     <properties>
         <mybatis-plus.version>3.5.0</mybatis-plus.version>
+        <mybatis-plus-mate.version>1.0.8</mybatis-plus-mate.version>
         <elasticSearch.version>7.17.7</elasticSearch.version>
     </properties>
     <dependencies>
@@ -34,7 +35,12 @@
             <artifactId>lombok</artifactId>
             <optional>true</optional>
         </dependency>
-        <!--elasticsearch-->
+        <!-- 集成redis依赖 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-redis</artifactId>
+        </dependency>
+        <!-- elasticsearch -->
         <dependency>
             <groupId>org.elasticsearch</groupId>
             <artifactId>elasticsearch</artifactId>
@@ -45,7 +51,7 @@
             <artifactId>elasticsearch-rest-high-level-client</artifactId>
             <version>${elasticSearch.version}</version>
         </dependency>
-        <!--mysql-->
+        <!-- mysql -->
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
@@ -59,6 +65,17 @@
             <groupId>com.baomidou</groupId>
             <artifactId>mybatis-plus</artifactId>
             <version>${mybatis-plus.version}</version>
+        </dependency>
+        <!-- mybatis-plus-mate 新特性 -->
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-mate-starter</artifactId>
+            <version>${mybatis-plus-mate.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-mate-annotation</artifactId>
+            <version>${mybatis-plus-mate.version}</version>
         </dependency>
         <!-- skywalking logback日志插件 -->
         <dependency>

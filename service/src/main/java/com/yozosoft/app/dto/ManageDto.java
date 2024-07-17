@@ -31,6 +31,10 @@ public class ManageDto {
     @Length(max = 30, message = SystemConstants.MsgStr.MAX_30)
     private String projectNumber;
 
+    @NotBlank(message = SystemConstants.MsgStr.NOT_BLANK)
+    @Length(max = 30, message = SystemConstants.MsgStr.MAX_30)
+    private String projectType;
+
     private int maxNumber;
 
 }

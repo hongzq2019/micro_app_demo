@@ -3,6 +3,11 @@ server:
 spring:
   application:
     name: manage
+  redis:
+    host: 127.0.0.1
+    port: 6379
+    database: 0
+    password:
   datasource:
     url: jdbc:mysql://127.0.0.1:3306/app?useSSL=false&useUnicode=true&characterEncoding=UTF-8
     driver-class-name: com.mysql.cj.jdbc.Driver
@@ -22,3 +27,10 @@ mybatis-plus:
     admin:
       client:
         url: http://127.0.0.1:7000
+# Mybatis Mate 配置
+mybatis-mate:
+  cert:
+    grant: test
+    license: test
+  # 开启数据审计
+  audit: false

@@ -53,6 +53,7 @@ public class CommonThreadFactory implements ThreadFactory {
 
     @Override
     public Thread newThread(Runnable runnable) {
+        theadSuffixId.incrementAndGet();
         String theadName = this.name + theadSuffixId;
         Thread thread = new Thread(runnable, theadName);
         thread.setDaemon(isDaemon);
